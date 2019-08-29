@@ -33,7 +33,7 @@ google_fonts:
     weights: "400,400i,700,700i"
 google_analytics: # Google Analytics id, e.g. "UA-NNNNNNNN-N"
 disqus:
-  shortname: # Disqus shortname, e.g. "my_disqus_shortname"
+  shortname: "matheusbatistateixeira"
 twitter:
   username: # site's Twitter username, e.g. "mmistakes"
 
@@ -48,15 +48,15 @@ feed:
   path: atom.xml
 
 # Pagination - https://jekyllrb.com/docs/pagination/
-# paginate: 10
-# paginate_path: /page:num/
+ paginate: 10
+ paginate_path: /page:num/
 
 # Search
 search_full_content: false # can have performance implications for large sites
 
 # Taxonomy pages
-# category_archive_path: "/categories/#"
-# tag_archive_path: "/tags/#"
+ category_archive_path: "/categories/#"
+ tag_archive_path: "/tags/#"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -99,6 +99,9 @@ author:
     - title: GitHub
       url: https://github.com/mathbteixeira
       icon: fab fa-github-square
+    - title: LinkedIn
+      url: https://linkedin.com/in/matheus-batista-teixeira/
+      icon: fab fa-linkedin
 
 # Footer Links
 footer_links:
@@ -108,6 +111,9 @@ footer_links:
   - title: GitHub
     url: https://github.com/mathbteixeira
     icon: fab fa-github-square
-  - title: Feed
-    url: atom.xml
-    icon: fas fa-rss-square
+  - title: LinkedIn
+    url: https://linkedin.com/in/matheus-batista-teixeira/
+    icon: fab fa-linkedin
+
+# Copyright
+copyright: "This site is made with <3 by *me, myself, and I*."
