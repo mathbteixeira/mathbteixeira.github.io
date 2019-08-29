@@ -48,8 +48,8 @@ feed:
   path: atom.xml
 
 # Pagination - https://jekyllrb.com/docs/pagination/
-# paginate: 10
-# paginate_path: /page:num/
+ paginate: 10
+ paginate_path: /page:num/
 
 # Search
 search_full_content: false # can have performance implications for large sites
@@ -116,4 +116,4 @@ footer_links:
     icon: fab fa-linkedin
 
 # Copyright
-# copyright: "This site is made with <3 by *me, myself, and I*."
+ copyright: "This site is made with <3 by *me, myself, and I*."
