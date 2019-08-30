@@ -18,7 +18,7 @@ theme: jekyll-theme-so-simple
 locale: en-US
 title: "Matheus Teixeira"
 description: "Software Engineer"
-baseurl: "/blog"
+baseurl: # the subpath of your site, e.g. "/blog"
 url: "https://mathbteixeira.github.io/"
 logo: "/images/perfil.jpeg"
 # path of site logo, e.g. "/images/logo.png"
