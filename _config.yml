@@ -17,9 +17,9 @@ theme: jekyll-theme-so-simple
 # remote_theme: mmistakes/so-simple-theme
 locale: en-US
 title: "Matheus Teixeira"
-description: "Testando Github Pages com tema Jekkyl So Simple."
-baseurl: # the subpath of your site, e.g. "/blog"
-url: "/blog"
+description: "Software Engineer"
+baseurl: "/blog"
+url: "https://mathbteixeira.github.io/"
 logo: "/images/perfil.jpeg"
 # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
@@ -33,7 +33,7 @@ google_fonts:
     weights: "400,400i,700,700i"
 google_analytics: # Google Analytics id, e.g. "UA-NNNNNNNN-N"
 disqus:
-  shortname: "https-mathbteixeira-github-io"
+  shortname: https-mathbteixeira-github-io
 twitter:
   username: # site's Twitter username, e.g. "mmistakes"
 
@@ -89,7 +89,7 @@ defaults:
 # Site Author
 author:
   name: Matheus Teixeira
-  picture:
+  picture: /images/perfil.jpeg
   email: mbateixeira@yahoo.com.br
   twitter:
   links:
