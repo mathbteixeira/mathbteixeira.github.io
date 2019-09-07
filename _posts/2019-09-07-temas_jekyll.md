@@ -2,7 +2,10 @@
 title: "Temas Jekyll"
 sub_title: "Alguns sites com temas gratuitos do Jekyll"
 categories:
-  - Quotes
+  - Dicas
+tags:
+  - Jekyll
+  - Tema
 elements:
   - content
   - css
