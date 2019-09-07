@@ -11,8 +11,9 @@ elements:
   - markup
 last_modified_at: 2019-09-07T00:16:49-05:00
 ---
+Alguns sites com temas gratuitos do Jekyll.
 
-# Temas:
+# Listas com temas:
 
 ##[20+ Jekyll Themes and Templates](https://www.wowthemes.net/jekyll-themes-templates/)
 
