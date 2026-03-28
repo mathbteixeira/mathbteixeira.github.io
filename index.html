@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matheus Teixeira | Senior Backend Engineer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
         /* Variáveis de Tema Padrão */
         :root {
@@ -14,8 +19,8 @@
             --text-terminal: #00ff88;
             --text-prompt: #8b949e;
             --border-color: #30363d;
-            --font-terminal: 'Courier New', Courier, monospace;
-            --font-ui: system-ui, -apple-system, sans-serif;
+            --font-terminal: 'Fira Code', monospace;
+            --font-ui: 'Inter', sans-serif;
             --accent: #00ff88;
         }
 
@@ -43,8 +48,29 @@
             --border-color: #d0d7de;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-sidebar); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b949e; 
+        }
+
         body {
             background-color: var(--bg-body);
+            /* Grid Background Subtil */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
             color: var(--text-main);
             font-family: var(--font-ui);
             margin: 0;
@@ -65,6 +91,7 @@
             box-sizing: border-box;
             z-index: 10;
             overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.3);
         }
 
         .profile-pic {
@@ -76,7 +103,7 @@
             margin-bottom: 20px;
             background-color: #161b22; 
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .profile-pic:hover {
@@ -90,6 +117,7 @@
             text-align: center;
             letter-spacing: -0.5px;
             color: #ffffff;
+            font-weight: 600;
         }
 
         .sidebar h2 {
@@ -141,13 +169,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .info-item svg {
             width: 16px;
             height: 16px;
             fill: currentColor;
+            flex-shrink: 0;
         }
 
         /* Tech Pills */
@@ -164,13 +193,18 @@
             background-color: #161b22;
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 500;
+            transition: border-color 0.2s;
+        }
+        
+        .tech-pill:hover {
+            border-color: var(--accent);
         }
 
-        /* Links Sociais */
+        /* Links Sociais e Download */
         .social-links {
             display: flex;
             flex-direction: column;
@@ -206,6 +240,33 @@
             fill: currentColor;
         }
 
+        /* Botão de Download CV Visual */
+        .download-btn {
+            background-color: var(--accent);
+            color: var(--bg-body);
+            border: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: var(--font-ui);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: #00cc6a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.25);
+        }
+
         /* Lado Direito: Terminal */
         .main-content {
             flex-grow: 1;
@@ -213,7 +274,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--bg-body);
         }
 
         .terminal-window {
@@ -223,7 +283,7 @@
             background-color: var(--bg-terminal);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -231,8 +291,8 @@
         }
 
         .terminal-header {
-            height: 30px;
-            background-color: rgba(0,0,0,0.2);
+            height: 32px;
+            background-color: rgba(0,0,0,0.3);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
@@ -246,7 +306,7 @@
         .dot.green { background-color: #27c93f; }
 
         .terminal-body {
-            padding: 20px;
+            padding: 24px;
             flex-grow: 1;
             overflow-y: auto;
             font-family: var(--font-terminal);
@@ -257,7 +317,7 @@
         }
 
         .output-line {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             white-space: pre-wrap;
             word-wrap: break-word;
         }
@@ -290,10 +350,10 @@
         @keyframes blink { 50% { opacity: 0; } }
 
         @media (max-width: 768px) {
-            body { flex-direction: column; overflow: auto; }
-            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 30px 20px; }
+            body { flex-direction: column; overflow: auto; background-image: none; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 30px 20px; box-shadow: none; }
             .main-content { padding: 15px; height: 60vh; }
-            .terminal-window { height: 100%; }
+            .terminal-window { height: 100%; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
         }
     </style>
 </head>
@@ -346,6 +406,13 @@
                 <svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
                 Email
             </a>
+            
+            <button class="download-btn" onclick="triggerDownload()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                Download CV
+            </button>
         </div>
     </div>
 
@@ -462,10 +529,9 @@
             if (e.key === 'Enter') {
                 const cmd = this.value.trim();
                 
-                // Trata a entrada de senha para o sudo su
                 if (isPasswordMode) {
                     this.value = '';
-                    printEchoHTML(`<div class="output-line"> </div>`); // Ecoa vazio para simular Linux
+                    printEchoHTML(`<div class="output-line"> </div>`); 
                     
                     isPasswordMode = false;
                     commandInput.type = 'text';
@@ -522,7 +588,6 @@
 
             if (cmd === '') return;
 
-            // Lógica do Easter Egg Sudo Su
             if (cmd === 'sudo su' || cmd === 'login') {
                 if (isRoot) {
                     typeResponse("You are already root.");
