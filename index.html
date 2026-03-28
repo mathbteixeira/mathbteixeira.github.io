@@ -57,7 +57,7 @@
             width: 320px;
             background-color: var(--bg-sidebar);
             border-right: 1px solid var(--border-color);
-            padding: 40px 20px;
+            padding: 50px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -71,22 +71,30 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--border-color);
-            margin-bottom: 20px;
-            /* Se a imagem não for encontrada, mostra um círculo com fallback */
+            margin-bottom: 25px;
             background-color: #161b22; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
         }
 
         .sidebar h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin: 0 0 5px 0;
             text-align: center;
+            letter-spacing: -0.5px;
         }
 
         .sidebar h2 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #8b949e;
-            font-weight: 400;
-            margin: 0 0 30px 0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 35px 0;
             text-align: center;
         }
 
@@ -100,17 +108,28 @@
         .social-links a {
             color: var(--text-main);
             text-decoration: none;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             transition: all 0.2s;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .social-links a:hover {
             background-color: #161b22;
             border-color: #8b949e;
+            transform: translateY(-2px);
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         /* Área Principal (Lado Direito) */
@@ -131,7 +150,7 @@
             background-color: var(--bg-terminal);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -165,6 +184,7 @@
             color: var(--text-terminal);
             font-size: 15px;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         .output-line {
@@ -193,6 +213,15 @@
             flex-grow: 1;
             outline: none;
         }
+        
+        /* Cursor piscando enquanto digita */
+        .typing-cursor::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
 
         /* Responsividade para celulares */
         @media (max-width: 768px) {
@@ -204,10 +233,10 @@
                 width: 100%;
                 border-right: none;
                 border-bottom: 1px solid var(--border-color);
-                padding: 20px;
+                padding: 30px 20px;
             }
             .main-content {
-                padding: 10px;
+                padding: 15px;
                 height: 60vh;
             }
             .terminal-window {
@@ -224,9 +253,24 @@
         <h2>Senior Backend Engineer</h2>
         
         <div class="social-links">
-            <a href="https://linkedin.com/in/matheus-batista-teixeira" target="_blank">LinkedIn</a>
-            <a href="https://github.com/mathbteixeira" target="_blank">GitHub</a>
-            <a href="mailto:mbateixeira@yahoo.com.br">Email</a>
+            <a href="https://linkedin.com/in/matheus-batista-teixeira" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="https://github.com/mathbteixeira" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+            <a href="mailto:mbateixeira@yahoo.com.br">
+                <svg viewBox="0 0 24 24">
+                    <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                </svg>
+                Email
+            </a>
         </div>
     </div>
 
@@ -240,7 +284,7 @@
             <div class="terminal-body" id="outputContainer">
                 <div id="output"></div>
                 <div class="input-line">
-                    <span class="prompt">matheus@portfolio:~$</span>
+                    <span class="prompt" id="mainPrompt">matheus@portfolio:~$</span>
                     <input type="text" id="commandInput" autocomplete="off" autofocus spellcheck="false">
                 </div>
             </div>
@@ -252,51 +296,99 @@
         const commandInput = document.getElementById('commandInput');
         const terminalWindow = document.getElementById('terminalWindow');
         const outputContainer = document.getElementById('outputContainer');
+        const mainPrompt = document.getElementById('mainPrompt');
 
         let currentLang = 'en';
-        
-        // Histórico de comandos (Setas)
         let commandHistory = [];
         let historyIndex = -1;
+        let isTyping = false;
 
-        // Base de dados do currículo
+        const availableCommands = [
+            'whoami', 'skills', 'experience', 'education', 'contact',
+            'download', 'theme', 'curl https://api.mathbteixeira.dev/v1/health',
+            'coffee', 'clear', 'lang pt', 'lang en'
+        ];
+
         const resumeData = {
             en: {
                 welcome: "Last login: " + new Date().toDateString() + "\nType 'help' to see available commands.",
-                help: "Available commands:\n  whoami      - View professional summary\n  skills      - View technical stack\n  experience  - View work history\n  education   - View academic background\n  download    - Download resume in PDF format\n  theme       - Change terminal theme (default, dracula, ubuntu, light)\n  lang pt     - Switch to Portuguese\n  lang en     - Switch to English\n  clear       - Clear terminal",
+                help: "Available commands:\n  whoami      - View professional summary\n  skills      - View technical stack\n  experience  - View work history\n  education   - View academic background\n  contact     - View contact info\n  download    - Download resume in PDF format\n  theme       - Change terminal theme (default, dracula, ubuntu, light)\n  curl        - Ping the backend API (Tip: type 'curl' and press TAB)\n  coffee      - Request caffeine\n  lang pt     - Switch to Portuguese\n  lang en     - Switch to English\n  clear       - Clear terminal",
                 whoami: "Matheus Batista Teixeira\nSenior Backend Software Engineer with 9 years of experience in distributed systems and high-scale enterprise architectures.\nExpert in Java/Spring ecosystem, event-driven (Kafka), and microservices architecture.",
                 skills: "Languages: Java, Python, SQL\nFrameworks: Spring Boot (Webflux, Data, Cloud, Batch), Quarkus, JUnit, MyBatis\nDatabases: PostgreSQL, MongoDB, Redis, Firebase, Oracle Database\nCloud/Devops: Docker, Google Cloud Platform (GCP), Splunk\nArchitecture: Apache Kafka, Microservices, REST APIs, GraphQL",
                 experience: "[2023-Present] Senior Software Engineer @ Abercrombie & Fitch\n- Reduced inventory data retrieval latency by 99.9% by refactoring SQL queries.\n- Architected high-volume automated data processing pipelines using Spring Batch.\n\n[2022-2023] Senior Backend Software Engineer @ Ontop\n- Architected an asynchronous event-driven email system using Apache Kafka.\n- Designed an auditing microservice to track third-party API calls.\n\n[2020-2022] Backend Software Engineer @ GFT Group\n- Developed cloud-native REST APIs using Java and Quarkus for the oil industry.\n\n[2018-2020] Software Engineer @ Mastercard\n- Engineered fallback strategies and circuit breaker patterns for global payment infrastructure.",
                 education: "MBA in Full Cycle Architecture - Full Cycle University (Graduation: Oct 2026)\nSystem Analysis and Development - Universidade Federal do Paraná (UFPR) (Graduated: Aug 2017)",
+                contact: "Curitiba, Brazil\nEmail: mbateixeira@yahoo.com.br\nLinkedIn: https://linkedin.com/in/matheus-batista-teixeira\nGithub: https://github.com/mathbteixeira",
                 downloading: "Initiating resume download (Matheus_Teixeira_Senior_Backend_Engineer.pdf)...",
                 themeSuccess: "Theme updated to: ",
+                curlStatus: "{\n  \"status\": \"200 OK\",\n  \"role\": \"Senior Backend Engineer\",\n  \"availability\": \"Open to new challenges\",\n  \"location\": \"Curitiba, Brazil (Remote)\",\n  \"core_stack\": [\"Java\", \"Spring Boot\", \"Kafka\", \"Microservices\"]\n}",
+                curlHint: "curl: missing URL.\nHint: type 'curl' and press TAB to auto-complete.",
+                coffeeMsg: "Generating caffeine for the next sprint...",
                 invalid: "Command not found. Type 'help' for available commands.",
                 langSwitch: "Language switched to English."
             },
             pt: {
                 welcome: "Último login: " + new Date().toDateString() + "\nDigite 'help' para ver os comandos disponíveis.",
-                help: "Comandos disponíveis:\n  whoami      - Ver resumo profissional\n  skills      - Ver stack tecnológica\n  experience  - Ver histórico profissional\n  education   - Ver formação acadêmica\n  download    - Baixar currículo em formato PDF\n  theme       - Mudar tema do terminal (default, dracula, ubuntu, light)\n  lang pt     - Mudar para Português\n  lang en     - Mudar para Inglês\n  clear       - Limpar o terminal",
+                help: "Comandos disponíveis:\n  whoami      - Ver resumo profissional\n  skills      - Ver stack tecnológica\n  experience  - Ver histórico profissional\n  education   - Ver formação acadêmica\n  contact     - Ver informações de contato\n  download    - Baixar currículo em formato PDF\n  theme       - Mudar tema do terminal (default, dracula, ubuntu, light)\n  curl        - Ping na API de backend (Dica: digite 'curl' e pressione TAB)\n  coffee      - Solicitar cafeína\n  lang pt     - Mudar para Português\n  lang en     - Mudar para Inglês\n  clear       - Limpar o terminal",
                 whoami: "Matheus Batista Teixeira\nEngenheiro de Software Backend Sênior com 9 anos de experiência em sistemas distribuídos e arquiteturas corporativas de alta escala.\nEspecialista no ecossistema Java/Spring, arquitetura orientada a eventos (Kafka) e microsserviços.",
                 skills: "Linguagens: Java, Python, SQL\nFrameworks: Spring Boot (Webflux, Data, Cloud, Batch), Quarkus, JUnit, MyBatis\nBancos de Dados: PostgreSQL, MongoDB, Redis, Firebase, Oracle Database\nCloud/Devops: Docker, Google Cloud Platform (GCP), Splunk\nArquitetura: Apache Kafka, Microsserviços, APIs REST, GraphQL",
                 experience: "[2023-Presente] Engenheiro de Software Sênior @ Abercrombie & Fitch\n- Reduziu a latência de recuperação de dados de inventário em 99,9% refatorando consultas SQL.\n- Arquitetou pipelines automatizados de alto volume para processamento de dados usando Spring Batch.\n\n[2022-2023] Engenheiro de Software Backend Sênior @ Ontop\n- Arquitetou um sistema de email assíncrono orientado a eventos usando Apache Kafka.\n- Projetou um microsserviço de auditoria para rastrear chamadas de API de terceiros.\n\n[2020-2022] Engenheiro de Software Backend @ GFT Group\n- Desenvolveu APIs REST cloud-native usando Java e Quarkus para a indústria de petróleo.\n\n[2018-2020] Engenheiro de Software @ Mastercard\n- Desenvolveu estratégias de fallback e circuit breaker para infraestrutura de pagamentos globais.",
                 education: "MBA em Full Cycle Architecture - Full Cycle University (Previsão: Out 2026)\nAnálise e Desenvolvimento de Sistemas - Universidade Federal do Paraná (UFPR) (Concluído: Ago 2017)",
+                contact: "Curitiba, Brasil\nEmail: mbateixeira@yahoo.com.br\nLinkedIn: https://linkedin.com/in/matheus-batista-teixeira\nGithub: https://github.com/mathbteixeira",
                 downloading: "Iniciando o download do currículo (Matheus_Teixeira_Senior_Backend_Engineer.pdf)...",
                 themeSuccess: "Tema atualizado para: ",
+                curlStatus: "{\n  \"status\": \"200 OK\",\n  \"cargo\": \"Senior Backend Engineer\",\n  \"disponibilidade\": \"Aberto a novos desafios\",\n  \"localizacao\": \"Curitiba, Brasil (Remoto)\",\n  \"stack_principal\": [\"Java\", \"Spring Boot\", \"Kafka\", \"Microsserviços\"]\n}",
+                curlHint: "curl: URL ausente.\nDica: digite 'curl' e pressione TAB para autocompletar.",
+                coffeeMsg: "Gerando cafeína para a próxima sprint...",
                 invalid: "Comando não encontrado. Digite 'help' para comandos disponíveis.",
                 langSwitch: "Idioma alterado para Português."
             }
         };
 
-        // Inicializa o Terminal
-        printOutput(resumeData[currentLang].welcome);
+        const coffeeArt = `
+      (  )   (   )  )
+       ) (   )  (  (
+       ( )  (    ) )
+       _____________
+      <_____________> ___
+      |             |/ _ \\
+      |               | | |
+      |               |_| |
+   ___|             |\\___/
+  /    \\___________/    \\
+  \\_____________________/
+`;
 
-        // Lidar com Entrada do Usuário e Histórico (Setas)
+        // Boot inicial
+        printEchoHTML(`<div class="output-line">${resumeData[currentLang].welcome}</div>`);
+
+        // Eventos do Teclado
         commandInput.addEventListener('keydown', function (e) {
+            if (isTyping) {
+                e.preventDefault(); 
+                return;
+            }
+
+            // AUTOCOMPLETAR COM TAB
+            if (e.key === 'Tab') {
+                e.preventDefault(); 
+                const inputVal = this.value.trim().toLowerCase();
+                
+                if (inputVal === 'c' || inputVal === 'cu' || inputVal === 'cur' || inputVal === 'curl') {
+                    this.value = 'curl https://api.mathbteixeira.dev/v1/health';
+                } else if (inputVal.length > 0) {
+                    const match = availableCommands.find(cmd => cmd.startsWith(inputVal));
+                    if (match) {
+                        this.value = match;
+                    }
+                }
+                return;
+            }
+
             if (e.key === 'Enter') {
                 const cmd = this.value.trim().toLowerCase();
                 
                 if (cmd) {
-                    commandHistory.push(cmd);
+                    commandHistory.push(this.value.trim()); 
                     historyIndex = commandHistory.length;
                 }
                 
@@ -304,7 +396,7 @@
                 processCommand(cmd);
             } 
             else if (e.key === 'ArrowUp') {
-                e.preventDefault(); // Evita que o cursor vá pro início
+                e.preventDefault();
                 if (historyIndex > 0) {
                     historyIndex--;
                     this.value = commandHistory[historyIndex];
@@ -322,19 +414,36 @@
             }
         });
 
-        // Foco automático
         document.addEventListener('click', (e) => {
-            if (e.target.closest('.terminal-body')) {
+            if (e.target.closest('.terminal-body') && !isTyping) {
                 commandInput.focus();
             }
         });
 
         function processCommand(cmd) {
-            printOutput(`<span style="color: var(--text-prompt)">matheus@portfolio:~$</span> ${cmd}`);
+            printEchoHTML(`<div class="output-line"><span class="prompt">matheus@portfolio:~$</span> ${cmd}</div>`);
 
             if (cmd === '') return;
 
-            // Lógica do comando Theme
+            if (cmd.startsWith('sudo')) {
+                typeResponse("matheus is not in the sudoers file. This incident will be reported.");
+                return;
+            }
+
+            if (cmd === 'coffee') {
+                typeResponse(coffeeArt + "\n" + resumeData[currentLang].coffeeMsg);
+                return;
+            }
+
+            if (cmd.startsWith('curl')) {
+                if (cmd === 'curl https://api.mathbteixeira.dev/v1/health' || cmd === 'curl api.mathbteixeira.dev/v1/health') {
+                    typeResponse(resumeData[currentLang].curlStatus);
+                } else {
+                    typeResponse(resumeData[currentLang].curlHint);
+                }
+                return;
+            }
+
             if (cmd.startsWith('theme')) {
                 const parts = cmd.split(' ');
                 if (parts.length > 1) {
@@ -342,54 +451,93 @@
                     const validThemes = ['default', 'dracula', 'ubuntu', 'light'];
                     
                     if (validThemes.includes(themeName)) {
-                        terminalWindow.className = 'terminal-window'; // Reseta classes
+                        terminalWindow.className = 'terminal-window'; 
                         if (themeName !== 'default') {
                             terminalWindow.classList.add(`theme-${themeName}`);
                         }
-                        printOutput(resumeData[currentLang].themeSuccess + themeName);
+                        typeResponse(resumeData[currentLang].themeSuccess + themeName);
                     } else {
-                        printOutput("Invalid theme. Available: default, dracula, ubuntu, light");
+                        typeResponse("Invalid theme. Available: default, dracula, ubuntu, light");
                     }
                 } else {
-                    printOutput("Usage: theme <name>\nAvailable: default, dracula, ubuntu, light");
+                    typeResponse("Usage: theme <name>\nAvailable: default, dracula, ubuntu, light");
                 }
                 return;
             }
 
+            // Comandos Padrões
             switch (cmd) {
                 case 'help':
-                    printOutput(resumeData[currentLang].help);
+                    typeResponse(resumeData[currentLang].help);
                     break;
                 case 'whoami':
-                    printOutput(resumeData[currentLang].whoami);
+                    typeResponse(resumeData[currentLang].whoami);
                     break;
                 case 'skills':
-                    printOutput(resumeData[currentLang].skills);
+                    typeResponse(resumeData[currentLang].skills);
                     break;
                 case 'experience':
-                    printOutput(resumeData[currentLang].experience);
+                    typeResponse(resumeData[currentLang].experience);
                     break;
                 case 'education':
-                    printOutput(resumeData[currentLang].education);
+                    typeResponse(resumeData[currentLang].education);
+                    break;
+                case 'contact':
+                    typeResponse(resumeData[currentLang].contact);
                     break;
                 case 'download':
-                    printOutput(resumeData[currentLang].downloading);
-                    triggerDownload();
+                    typeResponse(resumeData[currentLang].downloading);
+                    setTimeout(triggerDownload, 1000); 
                     break;
                 case 'clear':
                     outputDiv.innerHTML = '';
                     break;
                 case 'lang pt':
                     currentLang = 'pt';
-                    printOutput(resumeData[currentLang].langSwitch);
+                    typeResponse(resumeData[currentLang].langSwitch);
                     break;
                 case 'lang en':
                     currentLang = 'en';
-                    printOutput(resumeData[currentLang].langSwitch);
+                    typeResponse(resumeData[currentLang].langSwitch);
                     break;
                 default:
-                    printOutput(resumeData[currentLang].invalid);
+                    typeResponse(resumeData[currentLang].invalid);
             }
+        }
+
+        function printEchoHTML(html) {
+            outputDiv.insertAdjacentHTML('beforeend', html);
+            outputContainer.scrollTop = outputContainer.scrollHeight;
+        }
+
+        function typeResponse(text) {
+            isTyping = true;
+            commandInput.disabled = true;
+            mainPrompt.style.display = 'none';
+
+            const div = document.createElement('div');
+            div.className = 'output-line typing-cursor'; 
+            outputDiv.appendChild(div);
+
+            let i = 0;
+            const speed = 5; 
+            const chunkSize = 3; 
+
+            function type() {
+                if (i < text.length) {
+                    div.textContent += text.substring(i, i + chunkSize);
+                    i += chunkSize;
+                    outputContainer.scrollTop = outputContainer.scrollHeight;
+                    setTimeout(type, speed);
+                } else {
+                    div.classList.remove('typing-cursor');
+                    isTyping = false;
+                    commandInput.disabled = false;
+                    mainPrompt.style.display = 'inline';
+                    commandInput.focus();
+                }
+            }
+            type();
         }
 
         function triggerDownload() {
@@ -399,14 +547,6 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-        }
-
-        function printOutput(text) {
-            const div = document.createElement('div');
-            div.className = 'output-line';
-            div.innerHTML = text; 
-            outputDiv.appendChild(div);
-            outputContainer.scrollTop = outputContainer.scrollHeight;
         }
     </script>
 </body>
