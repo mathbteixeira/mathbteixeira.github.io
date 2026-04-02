@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matheus Teixeira | Senior Backend Engineer</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             --text-prompt: #8ae234;
             --border-color: #5e2750;
         }
-        
+
         /* Tema Light */
         .theme-light {
             --bg-terminal: #ffffff;
@@ -54,22 +54,22 @@
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-sidebar); 
+            background: var(--bg-sidebar);
         }
         ::-webkit-scrollbar-thumb {
-            background: #30363d; 
+            background: #30363d;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #8b949e; 
+            background: #8b949e;
         }
 
         body {
             background-color: var(--bg-body);
             /* Grid Background Subtil */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
             background-size: 40px 40px;
             color: var(--text-main);
             font-family: var(--font-ui);
@@ -101,7 +101,7 @@
             object-fit: cover;
             border: 3px solid var(--border-color);
             margin-bottom: 20px;
-            background-color: #161b22; 
+            background-color: #161b22;
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
@@ -199,7 +199,7 @@
             font-weight: 500;
             transition: border-color 0.2s;
         }
-        
+
         .tech-pill:hover {
             border-color: var(--accent);
         }
@@ -342,7 +342,7 @@
             flex-grow: 1;
             outline: none;
         }
-        
+
         .typing-cursor::after {
             content: '█';
             animation: blink 1s step-end infinite;
@@ -407,7 +407,7 @@
                 <svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
                 Email
             </a>
-            
+
             <button class="download-btn" onclick="triggerDownload()">
                 <svg viewBox="0 0 24 24">
                     <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
@@ -445,7 +445,7 @@
         let commandHistory = [];
         let historyIndex = -1;
         let isTyping = false;
-        
+
         // Estado de privilégio
         let isRoot = false;
         let isPasswordMode = false;
@@ -508,14 +508,14 @@
 
         commandInput.addEventListener('keydown', function (e) {
             if (isTyping) {
-                e.preventDefault(); 
+                e.preventDefault();
                 return;
             }
 
             if (e.key === 'Tab' && !isPasswordMode) {
-                e.preventDefault(); 
+                e.preventDefault();
                 const inputVal = this.value.trim().toLowerCase();
-                
+
                 if (inputVal === 'c' || inputVal === 'cu' || inputVal === 'cur' || inputVal === 'curl') {
                     this.value = 'curl https://api.mathbteixeira.dev/v1/health';
                 } else if (inputVal.length > 0) {
@@ -529,11 +529,11 @@
 
             if (e.key === 'Enter') {
                 const cmd = this.value.trim();
-                
+
                 if (isPasswordMode) {
                     this.value = '';
-                    printEchoHTML(`<div class="output-line"> </div>`); 
-                    
+                    printEchoHTML(`<div class="output-line"> </div>`);
+
                     isPasswordMode = false;
                     commandInput.type = 'text';
 
@@ -541,7 +541,7 @@
                         isRoot = true;
                         currentPromptText = "root@portfolio:~#";
                         mainPrompt.innerHTML = currentPromptText;
-                        mainPrompt.style.color = '#ff5f56'; 
+                        mainPrompt.style.color = '#ff5f56';
                         typeResponse("Access granted. Root privileges escalated.\nType 'exit' to return to normal user.");
                     } else {
                         mainPrompt.innerHTML = currentPromptText;
@@ -552,20 +552,20 @@
                 }
 
                 if (cmd) {
-                    commandHistory.push(cmd); 
+                    commandHistory.push(cmd);
                     historyIndex = commandHistory.length;
                 }
-                
+
                 this.value = '';
                 processCommand(cmd.toLowerCase());
-            } 
+            }
             else if (e.key === 'ArrowUp' && !isPasswordMode) {
                 e.preventDefault();
                 if (historyIndex > 0) {
                     historyIndex--;
                     this.value = commandHistory[historyIndex];
                 }
-            } 
+            }
             else if (e.key === 'ArrowDown' && !isPasswordMode) {
                 e.preventDefault();
                 if (historyIndex < commandHistory.length - 1) {
@@ -633,9 +633,9 @@
                 if (parts.length > 1) {
                     const themeName = parts[1];
                     const validThemes = ['default', 'dracula', 'ubuntu', 'light'];
-                    
+
                     if (validThemes.includes(themeName)) {
-                        terminalWindow.className = 'terminal-window'; 
+                        terminalWindow.className = 'terminal-window';
                         if (themeName !== 'default') {
                             terminalWindow.classList.add(`theme-${themeName}`);
                         }
@@ -655,18 +655,18 @@
                 case 'skills': typeResponse(resumeData[currentLang].skills); break;
                 case 'experience': typeResponse(resumeData[currentLang].experience); break;
                 case 'education': typeResponse(resumeData[currentLang].education); break;
-                case 'download': 
+                case 'download':
                     typeResponse(resumeData[currentLang].downloading);
-                    setTimeout(triggerDownload, 1000); 
+                    setTimeout(triggerDownload, 1000);
                     break;
                 case 'clear': outputDiv.innerHTML = ''; break;
-                case 'lang pt': 
-                    currentLang = 'pt'; 
-                    typeResponse(resumeData[currentLang].langSwitch); 
+                case 'lang pt':
+                    currentLang = 'pt';
+                    typeResponse(resumeData[currentLang].langSwitch);
                     break;
-                case 'lang en': 
-                    currentLang = 'en'; 
-                    typeResponse(resumeData[currentLang].langSwitch); 
+                case 'lang en':
+                    currentLang = 'en';
+                    typeResponse(resumeData[currentLang].langSwitch);
                     break;
                 default: typeResponse(resumeData[currentLang].invalid);
             }
@@ -683,12 +683,12 @@
             mainPrompt.style.display = 'none';
 
             const div = document.createElement('div');
-            div.className = 'output-line typing-cursor'; 
+            div.className = 'output-line typing-cursor';
             outputDiv.appendChild(div);
 
             let i = 0;
-            const speed = 5; 
-            const chunkSize = 3; 
+            const speed = 5;
+            const chunkSize = 3;
 
             function type() {
                 if (i < text.length) {
@@ -709,12 +709,21 @@
 
         function triggerDownload() {
             const link = document.createElement('a');
-            link.href = 'Matheus_Teixeira_Senior_Backend_Engineer.pdf'; 
+            link.href = 'Matheus_Teixeira_Senior_Backend_Engineer.pdf';
             link.download = 'Matheus_Teixeira_Senior_Backend_Engineer.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
+
+        window.onload = () => {
+            setTimeout(() => {
+                if (typeof processCommand === 'function') {
+                    processCommand('help');
+                }
+            }, 500);
+        };
+
     </script>
 </body>
 </html>
