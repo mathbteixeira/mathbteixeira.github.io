@@ -585,7 +585,9 @@
     });
 
     function processCommand(cmd) {
-        printEchoHTML(`<div class="output-line"><span class="prompt" style="color: ${isRoot ? '#ff5f56' : 'var(--text-prompt)'}">${currentPromptText}</span> ${cmd}</div>`);
+        const sanitizedCmd = escapeHTML(cmd);
+
+        printEchoHTML(`<div class="output-line"><span class="prompt" style="color: ${isRoot ? '#ff5f56' : 'var(--text-prompt)'}">${currentPromptText}</span> ${sanitizedCmd}</div>`);
 
         if (cmd === '') return;
 
@@ -723,6 +725,18 @@
             }
         }, 500);
     };
+
+    function escapeHTML(str) {
+        return str.replace(/[&<>'"]/g,
+            tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag)
+        );
+    }
 
 </script>
 </body>
